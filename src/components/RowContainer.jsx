@@ -44,7 +44,8 @@ const RowContainer = ({ flag, data, scrollValue }) => {
           <motion.div
             key={item.id}
             className="w-300 h-[250px] min-w-[300px] md:w-340 md:min-w-[340px]  bg-cardOverlay rounded-lg p-2 my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-between"
-            whileHover={{ scale: 1.2, zIndex: "2" }}
+            whileHover={{ scale: 1.2, zIndex: 2 }}
+            onClick={() => showZoomedView(item)}
           >
             <div className="w-full flex items-center justify-between">
               <motion.div
