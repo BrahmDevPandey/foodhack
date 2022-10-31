@@ -7,6 +7,7 @@ import NotFound from "../img/NotFound.svg";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import { useState } from "react";
+import ZoomedItem from "./ZoomedItem";
 
 const RowContainer = ({ flag, data, scrollValue }) => {
   const RowContainer = useRef();
@@ -21,6 +22,8 @@ const RowContainer = ({ flag, data, scrollValue }) => {
     });
     localStorage.setItem("cartItems", JSON.stringify(items));
   };
+
+  const showZoomedView = (item) => {};
 
   useEffect(() => {
     RowContainer.current.scrollLeft += scrollValue;
@@ -47,6 +50,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
             whileHover={{ scale: 1.2, zIndex: 2 }}
             onClick={() => showZoomedView(item)}
           >
+            <ZoomedItem item={item} />
             <div className="w-full flex items-center justify-between">
               <motion.div
                 className="w-40 h-40 -mt:8 drop-shadow-2xl"
