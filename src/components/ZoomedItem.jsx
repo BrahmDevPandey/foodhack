@@ -21,7 +21,6 @@ const ZoomedItem = (props) => {
           <motion.div
             whileTap={{ scale: 0.75 }}
             className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md"
-            // onClick={() => setItems([...cartItems, item])}
           >
             <MdShoppingBasket className="text-white" />
           </motion.div>
