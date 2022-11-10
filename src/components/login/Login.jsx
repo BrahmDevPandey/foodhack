@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import "./Login.css";
 import { useStateValue } from "../../context/StateProvider";
+import { actionType } from "../../context/reducer";
 import {
   getAuth,
   signInWithPopup,
@@ -14,12 +15,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [{ user }, setUser] = useStateValue();
+  // const [{ user }, setUser] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [newUser, setNewUser] = useState({ email: "", pass: "" });
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
   const loginPass = async (event) => {
@@ -28,12 +31,17 @@ const Login = () => {
     if (!user) {
       signInWithEmailAndPassword(firebaseAuth, email, pass)
         .then((response) => {
+          setErrorMsg("");
           alert("Login Successful.");
-          localStorage.setItem("user", email);
+          localStorage.setItem("user", JSON.stringify(response.user));
+          dispatch({
+            type: actionType.SET_USER,
+            user: response.user,
+          });
           navigate("/");
         })
         .catch((error) => {
-          console.log(error);
+          setErrorMsg(error.message);
         });
     }
   };
@@ -45,7 +53,7 @@ const Login = () => {
       const {
         user: { refreshToken, providerData },
       } = await signInWithPopup(firebaseAuth, provider);
-      setUser({
+      dispatch({
         user: providerData[0],
       });
       localStorage.setItem("user", JSON.stringify(providerData[0]));
@@ -57,10 +65,12 @@ const Login = () => {
     event.preventDefault();
     createUserWithEmailAndPassword(firebaseAuth, newUser.email, newUser.pass)
       .then((response) => {
+        setErrorMsg("");
         alert("Registration Successful");
         openLogin();
       })
       .catch((error) => {
+        setErrorMsg(error.message);
         console.log(error);
       });
   };
@@ -102,6 +112,7 @@ const Login = () => {
                 onChange={(event) => setPass(event.target.value)}
                 required
               />
+              <div className="p-1 text-red-500">{errorMsg}</div>
               <input type="submit" className="btn submit-btn" value="Submit" />
             </form>
             <button
@@ -163,6 +174,7 @@ const Login = () => {
                 }
                 required
               />
+              <div className="p-1 text-red-500">{errorMsg}</div>
               <button type="submit" className="submit-btn">
                 Submit
               </button>

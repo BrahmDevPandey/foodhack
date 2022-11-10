@@ -23,8 +23,6 @@ const RowContainer = ({ flag, data, scrollValue }) => {
     localStorage.setItem("cartItems", JSON.stringify(items));
   };
 
-  const showZoomedView = (item) => {};
-
   useEffect(() => {
     RowContainer.current.scrollLeft += scrollValue;
   }, [scrollValue]);
@@ -38,8 +36,8 @@ const RowContainer = ({ flag, data, scrollValue }) => {
       ref={RowContainer}
       className={`w-full flex items-center gap-3 my-12 scroll-smooth ${
         flag
-          ? "overflow-x-scroll scrollbar-none"
-          : "overflow-x-hidden flex-wrap justify-center"
+          ? "overflow-x-scroll scrollbar-thin"
+          : "overflow-x-hidden flex-wrap justify-center scrollbar-thin"
       }`}
     >
       {data && data.length > 0 ? (
@@ -48,14 +46,10 @@ const RowContainer = ({ flag, data, scrollValue }) => {
             key={item.id}
             className="w-300 h-[250px] min-w-[300px] md:w-340 md:min-w-[340px]  bg-cardOverlay rounded-lg p-2 my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-between"
             whileHover={{ scale: 1.2, zIndex: 2 }}
-            onClick={() => showZoomedView(item)}
           >
             <ZoomedItem item={item} />
             <div className="w-full flex items-center justify-between">
-              <motion.div
-                className="w-40 h-40 -mt:8 drop-shadow-2xl"
-                whileHover={{ scale: 1.2 }}
-              >
+              <motion.div className="w-40 h-40 -mt:8 drop-shadow-2xl">
                 <img
                   src={item?.imageURL}
                   alt=""

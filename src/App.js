@@ -7,6 +7,8 @@ import { useStateValue } from "./context/StateProvider";
 import { actionType } from "./context/reducer";
 import AdminPanel from "./components/AdminPanel";
 import Login from "./components/login/Login";
+import AboutUs from "./components/aboutus/AboutUs";
+import ContactUs from "./components/contactus/ContactUs";
 
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
@@ -35,6 +37,8 @@ const App = () => {
             <Route path="/adminPanel" element={<AdminPanel />} />
             <Route path="/createItem" element={<CreateContainer />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
           </Routes>
         </main>
       </div>

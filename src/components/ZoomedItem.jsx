@@ -5,7 +5,14 @@ import { MdShoppingBasket } from "react-icons/md";
 const ZoomedItem = (props) => {
   const item = props.item;
   return (
-    <Popup trigger={<button>Expand</button>} position="center center">
+    <Popup
+      trigger={
+        <button className="bg-red-300 text-black w-min justify -m-4 ml-64 p-2">
+          Details
+        </button>
+      }
+      position="center center"
+    >
       <motion.div className="w-[700px] h-[450px] min-w-[300px] md:w-340 md:min-w-[340px]  bg-cardOverlay rounded-lg p-2 my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-between">
         <div className="w-full flex items-center justify-between">
           <motion.div

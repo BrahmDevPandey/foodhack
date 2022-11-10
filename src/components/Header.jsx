@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import Logo from "../img/logo.png";
-import { MdShoppingBasket, MdAdd, MdLogout } from "react-icons/md";
+import { MdShoppingBasket, MdLogout } from "react-icons/md";
 import Avatar from "../img/avatar.png";
 import { motion } from "framer-motion";
 import { actionType } from "../context/reducer";
 import { useStateValue } from "../context/StateProvider";
-
 import { Link } from "react-router-dom";
-
+import { signOut, getAuth } from "firebase/auth";
+import { app } from "../firebase.config";
 const Header = () => {
   const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
-
   const [isMenu, setisMenu] = useState(false);
+  const firebaseAuth = getAuth(app);
 
   const toggleMenu = () => {
     setisMenu(!isMenu);
@@ -19,7 +19,9 @@ const Header = () => {
 
   const logout = () => {
     setisMenu(false);
+    signOut(firebaseAuth);
     localStorage.clear();
+
     dispatch({
       type: actionType.SET_USER,
       user: null,
@@ -49,16 +51,16 @@ const Header = () => {
             className="flex items-center gap-8 "
           >
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              <Link to={"/#home"}>Home</Link>
+              <Link to={"/"}>Home</Link>
             </li>
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               <a href="#menu">Menu</a>
             </li>
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              Latest Offers
+              <Link to={"/contact"}>Contact Us</Link>
             </li>
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              About
+              <Link to={"/about"}>About Us</Link>
             </li>
           </motion.ul>
 
