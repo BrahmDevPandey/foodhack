@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { motion } from "framer-motion";
 import { RiRefreshFill } from "react-icons/ri";
-
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import EmptyCart from "../img/emptyCart.svg";
 import { CartItem } from ".";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
@@ -105,7 +105,7 @@ const CartContainer = () => {
                 type="button"
                 className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
               >
-                Check Out
+                <Link to="/checkout">Check Out</Link>
               </motion.button>
             ) : (
               <motion.button

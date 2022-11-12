@@ -13,6 +13,7 @@ import ErrorPage from "./components/ErrorPage";
 import AllUsers from "./components/AllUsers";
 import AllItems from "./components/AllItems";
 import AllOrders from "./components/AllOrders";
+import Checkout from "./components/Checkout";
 
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/allUsers" element={<AllUsers />} />
             <Route path="/allItems" element={<AllItems />} />
             <Route path="/allOrders" element={<AllOrders />} />
+            <Route path="/checkout" element={<Checkout />} />
 
             <Route path="/*" element={<ErrorPage />} />
           </Routes>
