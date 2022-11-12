@@ -9,6 +9,10 @@ import AdminPanel from "./components/AdminPanel";
 import Login from "./components/login/Login";
 import AboutUs from "./components/aboutus/AboutUs";
 import ContactUs from "./components/contactus/ContactUs";
+import ErrorPage from "./components/ErrorPage";
+import AllUsers from "./components/AllUsers";
+import AllItems from "./components/AllItems";
+import AllOrders from "./components/AllOrders";
 
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
@@ -39,6 +43,11 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/allUsers" element={<AllUsers />} />
+            <Route path="/allItems" element={<AllItems />} />
+            <Route path="/allOrders" element={<AllOrders />} />
+
+            <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </main>
       </div>
