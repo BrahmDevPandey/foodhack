@@ -7,8 +7,8 @@ const handleSubmit = (event) => {
 
 function ContactUs() {
   return (
-    <section class="contact">
-      <div class="content">
+    <section className="contact">
+      <div className="content">
         <h2>Contact Us</h2>
         <p>
           We'd love to hear from you!
@@ -16,13 +16,13 @@ function ContactUs() {
           Send us a message using the form, or email us.
         </p>
       </div>
-      <div class="container">
-        <div class="contactInfo">
-          <div class="box">
-            <div class="icon">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
+      <div className="container">
+        <div className="contactInfo">
+          <div className="box">
+            <div className="icon">
+              <i className="fa fa-map-marker" aria-hidden="true"></i>
             </div>
-            <div class="text">
+            <div className="text">
               <h3>Address</h3>
               <p>
                 KIET Group of Institutions
@@ -33,11 +33,11 @@ function ContactUs() {
               </p>
             </div>
           </div>
-          <div class="box">
-            <div class="icon">
-              <i class="fa fa-phone" aria-hidden="true"></i>
+          <div className="box">
+            <div className="icon">
+              <i className="fa fa-phone" aria-hidden="true"></i>
             </div>
-            <div class="text">
+            <div className="text">
               <h3>Phone</h3>
               <p>
                 9821932021
@@ -46,11 +46,11 @@ function ContactUs() {
               </p>
             </div>
           </div>
-          <div class="box">
-            <div class="icon">
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          <div className="box">
+            <div className="icon">
+              <i className="fa fa-envelope-o" aria-hidden="true"></i>
             </div>
-            <div class="text">
+            <div className="text">
               <h3>Email</h3>
               <p>
                 dubeyanuj.june2406@gmail.com
@@ -60,22 +60,22 @@ function ContactUs() {
             </div>
           </div>
         </div>
-        <div class="contactForm">
+        <div className="contactForm">
           <form onSubmit={handleSubmit}>
             <h2>Send Message</h2>
-            <div class="inputBox">
+            <div className="inputBox">
               <input type="text" name="" required="required" />
               <span>Full Name</span>
             </div>
-            <div class="inputBox">
+            <div className="inputBox">
               <input type="text" name="" required="required" />
               <span>Email</span>
             </div>
-            <div class="inputBox">
+            <div className="inputBox">
               <textarea required="required"></textarea>
               <span>Type your Message...</span>
             </div>
-            <div class="inputBox">
+            <div className="inputBox">
               <input type="submit" name="" value="Send" />
             </div>
           </form>

@@ -13,6 +13,7 @@ import {
 import { app } from "../../firebase.config";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createUser } from "../../utils/firebaseFunctions";
 
 const Login = () => {
   // const [{ user }, setUser] = useStateValue();
@@ -21,7 +22,7 @@ const Login = () => {
   const provider = new GoogleAuthProvider();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [newUser, setNewUser] = useState({ email: "", pass: "" });
+  const [newUser, setNewUser] = useState({ name: "", email: "", pass: "" });
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
@@ -66,6 +67,7 @@ const Login = () => {
     createUserWithEmailAndPassword(firebaseAuth, newUser.email, newUser.pass)
       .then((response) => {
         setErrorMsg("");
+        // createUser
         alert("Registration Successful");
         openLogin();
       })
@@ -137,6 +139,7 @@ const Login = () => {
                 type="text"
                 className="input-box"
                 placeholder="Your Name"
+                value={newUser.name}
                 required
               />
               <input

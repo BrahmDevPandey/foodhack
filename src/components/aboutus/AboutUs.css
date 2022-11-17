@@ -1,21 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
-section {
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  color: black;
 }
 .section {
-  width: 100%;
-  min-height: 100vh;
-  background-color: #ddd;
+  margin-top: -8%;
+  width: 80%;
+  height: 80%;
+  background-color: transparent;
 }
 .container {
   width: 80%;
   display: flex;
-  margin: auto;
+  margin: 0px 70px;
   padding-top: 100px;
   height: 600px;
+  background-color: transparent;
 }
 .content-section {
   float: left;
@@ -32,7 +35,8 @@ section {
 }
 .content-section .title {
   text-transform: uppercase;
-  font-size: 28px;
+  font-weight: bold;
+  font-size: 38px;
 }
 .content-section .content h3 {
   margin-top: 20px;
@@ -86,10 +90,10 @@ section {
   }
   .image-section {
     float: none;
-    width: 100%;
+    max-width: 100%;
   }
   .image-section img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
     margin: auto;

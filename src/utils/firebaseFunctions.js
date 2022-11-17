@@ -46,3 +46,9 @@ export const getAdminMails = async () => {
     .map((adm) => adm.email);
   return Array.from(res);
 };
+
+export const createUser = async (user) => {
+  await setDoc(doc(firestore, "users", `${Date.now()}`), user, {
+    merge: true,
+  });
+};
