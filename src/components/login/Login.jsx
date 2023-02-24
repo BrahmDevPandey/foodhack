@@ -140,6 +140,9 @@ const Login = () => {
                 className="input-box"
                 placeholder="Your Name"
                 value={newUser.name}
+                onChange={(event) =>
+                  setNewUser({ ...newUser, name: event.target.value })
+                }
                 required
               />
               <input
