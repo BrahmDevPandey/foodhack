@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/foodhack/static/css/main.b41febb0.css",
-    "main.js": "/foodhack/static/js/main.af9346b4.js",
+    "main.js": "/foodhack/static/js/main.c4dc2de4.js",
     "static/media/cheff.png": "/foodhack/static/media/cheff.73e7742969533f1c7820.png",
     "static/media/shoe.jpg": "/foodhack/static/media/shoe.5c8a46e17bf6a5657456.jpg",
     "static/media/c3.png": "/foodhack/static/media/c3.55f83414f33f66456b35.png",
@@ -17,10 +17,10 @@
     "static/media/NotFound.svg": "/foodhack/static/media/NotFound.4e90bb93460bfd8d9e2c86b42ef91a4a.svg",
     "index.html": "/foodhack/index.html",
     "main.b41febb0.css.map": "/foodhack/static/css/main.b41febb0.css.map",
-    "main.af9346b4.js.map": "/foodhack/static/js/main.af9346b4.js.map"
+    "main.c4dc2de4.js.map": "/foodhack/static/js/main.c4dc2de4.js.map"
   },
   "entrypoints": [
     "static/css/main.b41febb0.css",
-    "static/js/main.af9346b4.js"
+    "static/js/main.c4dc2de4.js"
   ]
 }
