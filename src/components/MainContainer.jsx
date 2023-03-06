@@ -12,6 +12,8 @@ const MainContainer = () => {
   const [{ foodItems, cartShow }, dispatch] = useStateValue();
 
   const [scrollValue, setScrollValue] = useState(0);
+  let maxScrollValue = 900;
+
   useEffect(() => {}, [scrollValue, cartShow]);
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center overflow-x-hidden">
@@ -27,14 +29,18 @@ const MainContainer = () => {
             <motion.div
               whileTap={{ scale: 0.75 }}
               className="w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer hover: shadow-lg flex items-center justify-center"
-              onClick={() => setScrollValue(-200)}
+              onClick={() =>
+                setScrollValue((scrollValue - 200) % maxScrollValue)
+              }
             >
               <MdChevronLeft className="text-lg text-white" />
             </motion.div>
             <motion.div
               whileTap={{ scale: 0.75 }}
               className="w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer transition-all duration-100 ease-in-out hover: shadow-lg flex items-center justify-center"
-              onClick={() => setScrollValue(200)}
+              onClick={() =>
+                setScrollValue((scrollValue + 200) % maxScrollValue)
+              }
             >
               <MdChevronRight className="text-lg text-white" />
             </motion.div>
@@ -42,6 +48,7 @@ const MainContainer = () => {
         </div>
 
         <RowContainer
+          id="row-container"
           scrollValue={scrollValue}
           flag={true}
           data={foodItems?.filter((n) => n.category === "fruits")}

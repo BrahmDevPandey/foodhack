@@ -27,6 +27,7 @@ const MenuContainer = () => {
                 className={`group ${
                   filter === category.urlParamName ? "bg-cartNumBg" : "bg-white"
                 } w-24 min-w-[94px] h-28 cursor-pointer rounded-lg drop-shadow-xl flex flex-col gap-3 items-center justify-center hover:bg-cartNumBg duration-150 transition-all ease-in-out `}
+                onClick={() => setFilter(category.urlParamName)}
               >
                 <div
                   className={`w-10 h-10 rounded-full shadow-lg ${
@@ -34,7 +35,6 @@ const MenuContainer = () => {
                       ? "bg-white"
                       : "bg-cartNumBg"
                   } group-hover:bg-white flex items-center justify-center `}
-                  onClick={() => setFilter(category.urlParamName)}
                 >
                   <IoFastFood
                     className={`${

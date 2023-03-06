@@ -56,6 +56,7 @@ const CartContainer = () => {
         <motion.p
           whileTap={{ scale: 0.75 }}
           className="flex items-center gap-2 p-1 px-2 my-2 bg-gray-100 rounded-md hover:shadow-md cursor-pointer text-textColor text-base"
+          onClick={clearCart}
         >
           Clear <RiRefreshFill />
         </motion.p>
@@ -100,21 +101,25 @@ const CartContainer = () => {
             </div>
 
             {user ? (
-              <motion.button
-                whileTap={{ scale: 0.8 }}
-                type="button"
-                className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
-              >
-                <Link to="/checkout">Check Out</Link>
-              </motion.button>
+              <Link to="/checkout" className="w-full">
+                <motion.button
+                  whileTap={{ scale: 0.8 }}
+                  type="button"
+                  className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
+                >
+                  Check Out
+                </motion.button>
+              </Link>
             ) : (
-              <motion.button
-                whileTap={{ scale: 0.8 }}
-                type="button"
-                className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
-              >
-                <Link to="/login">LogIn</Link>
-              </motion.button>
+              <Link to="/login" className="w-full">
+                <motion.button
+                  whileTap={{ scale: 0.8 }}
+                  type="button"
+                  className="w-full rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
+                >
+                  Login
+                </motion.button>
+              </Link>
             )}
           </div>
         </div>

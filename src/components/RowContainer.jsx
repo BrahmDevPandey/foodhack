@@ -12,9 +12,9 @@ import ZoomedItem from "./ZoomedItem";
 const RowContainer = ({ flag, data, scrollValue }) => {
   const RowContainer = useRef();
 
-  const [items, setItems] = useState([]);
-
   const [{ cartItems }, dispatch] = useStateValue();
+  const [items, setItems] = useState(cartItems);
+
   const addtocart = () => {
     dispatch({
       type: actionType.SET_CARTITEMS,

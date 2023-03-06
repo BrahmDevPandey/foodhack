@@ -10,6 +10,7 @@ import { signOut, getAuth } from "firebase/auth";
 import { app } from "../firebase.config";
 import { getAdminMails } from "../utils/firebaseFunctions";
 import { useEffect } from "react";
+import { HashLink } from "react-router-hash-link";
 
 const Header = () => {
   const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
@@ -38,6 +39,10 @@ const Header = () => {
       type: actionType.SET_USER,
       user: null,
     });
+    dispatch({
+      type: actionType.SET_CARTITEMS,
+      cartItems: [],
+    });
   };
 
   const showCart = () => {
@@ -51,7 +56,7 @@ const Header = () => {
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
       {/* desktop and tablet*/}
       <div className="hidden md:flex w-full h-full items-center justify-between">
-        <Link to={"/"} className="flex items-center gap-2">
+        <Link smooth to={"/"} className="flex items-center gap-2">
           <img src={Logo} className="w-8 object-cover" alt="logo" />
           <p className="text-headingColor text-xl font-bold">FoodHack</p>
         </Link>
@@ -63,10 +68,14 @@ const Header = () => {
             className="flex items-center gap-8 "
           >
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              <Link to={"/"}>Home</Link>
+              <Link smooth to={"/"}>
+                Home
+              </Link>
             </li>
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              <a href="#menu">Menu</a>
+              <HashLink smooth to={"/#menu"}>
+                Menu
+              </HashLink>
             </li>
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               <Link to={"/contact"}>Contact Us</Link>
@@ -90,13 +99,12 @@ const Header = () => {
             )}
           </div>
 
-          <div className="relative ">
+          <div className="relative " onClick={toggleMenu}>
             <motion.img
               whileTap={{ scale: 0.6 }}
               src={user ? user.photoURL : Avatar}
               className="w-10 min-w-[40px] h-10 min-h-[40px] drop- shadow-xl cursor-pointer rounded-full"
               alt="userprofile"
-              onClick={toggleMenu}
             />
             {isMenu && (
               <motion.div
@@ -185,29 +193,17 @@ const Header = () => {
                 )}
 
               <ul className="flex flex-col">
-                <li
-                  className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2 "
-                  onClick={() => setisMenu(false)}
-                >
-                  Home
+                <li className="p-3 text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+                  <Link to={"/"}>Home</Link>
                 </li>
-                <li
-                  className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2 "
-                  onClick={() => setisMenu(false)}
-                >
-                  Menu
+                <li className="p-3 text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+                  <a href="#menu">Menu</a>
                 </li>
-                <li
-                  className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2 "
-                  onClick={() => setisMenu(false)}
-                >
-                  About
+                <li className="p-3 text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+                  <Link to={"/contact"}>Contact Us</Link>
                 </li>
-                <li
-                  className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2 "
-                  onClick={() => setisMenu(false)}
-                >
-                  Services
+                <li className="p-3 text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+                  <Link to={"/about"}>About Us</Link>
                 </li>
               </ul>
 
